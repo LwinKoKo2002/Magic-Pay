@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -45,5 +47,14 @@ class LoginController extends Controller
     protected function guard()
     {
         return Auth::guard('web');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $user->ip = $request->ip();
+        $user->user_agent = $request->server('HTTP_USER_AGENT');
+        $user->login_time = now();
+        $user->update();
+        return redirect($this->redirectTo);
     }
 }
