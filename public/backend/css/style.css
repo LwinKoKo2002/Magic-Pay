@@ -1,0 +1,59 @@
+td {
+    font-size: 15px !important;
+}
+
+.btn {
+    padding: 10px 30px !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+}
+
+.card {
+    border-radius: 0.25rem !important;
+}
+
+.btn-primary {
+    box-shadow: 1px 3px 4px #0c3397f1;
+}
+
+.btn-secondary {
+    box-shadow: 1px 3px 4px rgba(61, 63, 67, 0.85);
+}
+.add-button .btn {
+    border-radius: 0.25rem !important;
+}
+
+.add-button a {
+    font-size: 15px;
+}
+
+.icon-box .btn-warning {
+    padding: 10px 37px !important;
+    box-shadow: 1px 3px 4px #8a6103;
+}
+
+.icon-box .btn-danger {
+    box-shadow: 1px 3px 4px #870909;
+}
+
+/*--------------- Sweetalert ---------------*/
+.swal2-popup {
+    border-radius: 15px !important;
+}
+
+.swal2-title {
+    font-size: 20px !important;
+}
+
+.swal2-styled.swal2-cancel {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    box-shadow: 1px 3px 4px rgba(61, 63, 67, 0.85);
+}
+
+.swal2-styled.swal2-confirm {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    background-color: #ad1e40 !important;
+    box-shadow: 1px 3px 4px #870909;
+}
