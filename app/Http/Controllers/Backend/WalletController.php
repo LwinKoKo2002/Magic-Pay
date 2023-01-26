@@ -21,7 +21,6 @@ class WalletController extends Controller
             if ($each->user) {
                 $user = $each->user;
                 return '<p>Name : '.$user->name.'</p>
-                        <p>Email : '.$user->email.'</p>
                         <p>Phone : '.$user->phone.'</p>';
             }
         })

@@ -26,7 +26,6 @@ class storeUser extends FormRequest
     {
         return [
             'name'=>['required','min:3','max:16'],
-            'email'=>['required','email',Rule::unique('users', 'email')],
             'phone'=>['required','min:9','max:11',Rule::unique('users', 'phone')],
             'password'=>['required','min:8','max:16']
         ];

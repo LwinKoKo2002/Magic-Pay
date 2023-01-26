@@ -14,7 +14,7 @@ class AddOtherColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->unique()->after('email');
+            $table->string('phone')->unique()->after('name');
             $table->string('ip')->nullable()->after('phone');
             $table->text('user_agent')->nullable()->after('ip');
             $table->timestamp('login_time')->nullable()->after('user_agent');

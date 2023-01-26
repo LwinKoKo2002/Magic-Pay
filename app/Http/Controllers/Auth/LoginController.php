@@ -57,4 +57,9 @@ class LoginController extends Controller
         $user->update();
         return redirect($this->redirectTo);
     }
+
+    public function username()
+    {
+        return 'phone';
+    }
 }

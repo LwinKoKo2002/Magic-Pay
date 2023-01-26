@@ -26,7 +26,6 @@
                                 <tr>
                                         <th>id</th>
                                         <th>Name</th>
-                                        <th>Email</th>
                                         <th>Phone</th>
                                         <th class="restrit">Ip</th>
                                         <th class="restrit">User Agent</th>
@@ -50,7 +49,6 @@
                         columns: [
                                 {data: 'id', name: 'id'},
                                 {data: 'name', name: 'name'},
-                                {data: 'email', name: 'email'},
                                 {data: 'phone', name: 'phone'},
                                 {data: 'ip', name: 'ip'},
                                 {data: 'user_agent', name: 'user_agent'},

@@ -19,7 +19,6 @@
                         @method('PATCH')
                         @csrf
                         <x-input name="name" value="{{ $user->name }}" />
-                        <x-input name="email" type="email" value="{{ $user->email }}" />
                         <x-input name="phone" type="number" value="{{ $user->phone }}" />
                         <x-input name="password" type="password" />
                         <div class="text-center">

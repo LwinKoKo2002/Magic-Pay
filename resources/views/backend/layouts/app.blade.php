@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Language" content="en">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         <meta name="viewport"
@@ -37,7 +38,6 @@
         </div>
         <!-- Architect Ui Js -->
         <script type="text/javascript" src="{{asset('/backend/scripts/main.js')}}"></script>
-        {{-- <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> --}}
         <!-- Datatable Js -->
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>

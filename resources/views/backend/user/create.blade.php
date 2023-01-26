@@ -18,7 +18,6 @@
                 <form action="{{ route('admin.user.store') }}" method="POST">
                         @csrf
                         <x-input name="name" />
-                        <x-input name="email" type="email" />
                         <x-input name="phone" type="number" />
                         <x-input name="password" type="password" />
                         <div class="text-center">

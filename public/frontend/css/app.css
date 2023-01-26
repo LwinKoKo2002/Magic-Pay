@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+    --theme-color: #17114f;
+    --theme-color-pale: #231a72;
+    --text-success: #37a987;
+    --text-white: #ffffff;
+    --text-white-pale: #e8edf1;
+    --text-dark: #333333;
+    --text-dark-pale: #757575a3;
+    --body-color: #aaabacb9;
+    --text-danger: #d21c1c;
+}
+
+* {
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--body-color);
+}
+
+.card {
+    border: none;
+    box-shadow: 2px 3px 6px var(--text-dark-pale);
+    border-radius: 10px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/*---------------- Auth Form ----------------*/
+.auth-form h3 {
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 27px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.auth-form .form-group {
+    margin-bottom: 40px !important;
+}
+
+.auth-form label {
+    color: var(--body-color);
+    font-size: 15px;
+}
+
+.auth-form input {
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid var(--text-dark-pale);
+    outline: none;
+    box-shadow: none;
+    padding: 20px !important;
+}
+
+.auth-form input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--text-dark-pale);
+    border-radius: 5px;
+}
+
+.auth-form .text-danger {
+    color: var(--text-danger);
+    font-size: 15px !important;
+    margin-top: 15px !important;
+}
+
+.auth-form p {
+    margin-top: 20px;
+    color: var(--text-dark);
+}
+
+.auth-form a {
+    color: var(--text-success);
+    text-decoration: underline;
+}
+
+.auth-form .btn-theme {
+    margin-top: 50px;
+    background-color: var(--theme-color);
+    color: var(--text-white);
+    padding: 12px;
+    font-weight: 500;
+    /* text-transform: uppercase; */
+    letter-spacing: 0.7px;
+}
+
+.auth-form .btn-theme:hover {
+    background-color: var(--theme-color-pale);
+}
+
+.auth-form .btn-theme:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+@media screen and (max-width: 920px) {
+    .auth-form {
+        margin: 20px 0px;
+    }
+}
