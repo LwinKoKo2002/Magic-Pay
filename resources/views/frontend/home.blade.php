@@ -1,10 +1,9 @@
 @extends('frontend.layouts.app')
-
+@section('title','Home Page')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h3 class="text-center">Home Page</h3>
+    <div class="d-flex justify-content-center">
+        <div class="col-md-10">
         </div>
     </div>
 </div>

@@ -12,4 +12,6 @@ Route::post('/admin/login', [AdminLoginController::class,'login'])->name('admin.
 Route::post('/admin/logout', [AdminLoginController::class,'logout'])->name('admin.logout');
 
 //Home Page
-Route::get('/', [PageController::class,'index']);
+Route::namespace('Frontend')->middleware('auth:web')->group(function () {
+    Route::get('/', [PageController::class,'index'])->name('home');
+});
