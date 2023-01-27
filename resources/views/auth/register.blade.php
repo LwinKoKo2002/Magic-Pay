@@ -14,7 +14,7 @@
                     <x-input-wrapper>
                         <x-label name="password confirm" />
                         <input id="password confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password">
+                            required autocomplete="new-password" placeholder="Confirm Password">
                     </x-input-wrapper>
                     <button class="btn btn-theme btn-block">Signup</button>
                     <p class="text-center">Already member? please <a href="{{ route('login') }}">Login</a> </p>

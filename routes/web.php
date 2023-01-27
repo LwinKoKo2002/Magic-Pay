@@ -14,4 +14,8 @@ Route::post('/admin/logout', [AdminLoginController::class,'logout'])->name('admi
 //Home Page
 Route::namespace('Frontend')->middleware('auth:web')->group(function () {
     Route::get('/', [PageController::class,'index'])->name('home');
+    Route::get('/profile', [PageController::class,'profile'])->name('profile');
+    Route::get('/change-password', [PageController::class,'changePassword'])->name('changePassword');
+    Route::post('/change-password', [PageController::class,'updatePassword'])->name('update-password');
+    Route::get('/wallet', [PageController::class,'wallet'])->name('wallet');
 });

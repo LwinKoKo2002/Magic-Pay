@@ -76,7 +76,7 @@
                         e.preventDefault();
                         let id = $(this).data("id");
                         Swal.fire({
-                        title: 'Are you sure , you want to logout?',
+                        title: 'Are you sure , you want to delete?',
                         reverseButtons : true,
                         showCancelButton: true,
                         confirmButtonText: 'Yes, Delete',
