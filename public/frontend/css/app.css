@@ -392,9 +392,52 @@ input::-webkit-inner-spin-button {
 }
 
 .home h6 {
-    font-size: 15px;
+    font-size: 17px;
 }
 
-.home .scan-and-pay {
-    border-right: 1px solid var(--text-dark-normal);
+.home .transfer-container p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.home .transfer-icon-container a {
+    text-decoration: none;
+}
+
+.home .transfer-icon-container img {
+    width: 37px;
+    height: 37px;
+}
+
+.home .transfer-icon-container span {
+    margin-left: 3px;
+    color: var(--text-dark);
+    font-size: 15px;
+    letter-spacing: 0.1px;
+}
+.home .transfer-container .card {
+    border-radius: 5px;
+}
+
+.home .transfer-container h6 {
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    color: var(---text-dark);
+}
+
+.home .transfer-container img {
+    width: 29px;
+    height: 29px;
+    margin-right: 5px;
+}
+
+.home .transfer-container a {
+    text-decoration: none;
+    color: var(--text-dark);
+}
+
+.home .transfer-container span {
+    font-size: 14px;
+    letter-spacing: 0.4px;
 }

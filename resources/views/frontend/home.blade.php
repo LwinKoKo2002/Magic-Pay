@@ -24,6 +24,70 @@
             </div>
         </div>
     </div>
+    <div class="row transfer-icon-container mb-1">
+        <a href="" class="col-6 p-2">
+            <div class="card mt-3">
+                <div class="card-body" style="padding: 13px 8px;">
+                    <img src="{{ asset('/frontend/images/scanner.png') }}" alt="scanner" class="mx-1">
+                    <span>Scan & Pay</span>
+                </div>
+            </div>
+        </a>
+        <a href="" class="col-6 p-2">
+            <div class="card mt-3">
+                <div class="card-body" style="padding: 13px 8px;">
+                    <img src="{{ asset('/frontend/images/qr-code.png') }}" alt="qr-code" class="mx-1">
+                    <span>Receive Qr</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="row transfer-container">
+        <div class="col-12 p-2">
+            <p class="mt-1 mb-3" style="letter-spacing: 0.1px">Top Services</p>
+            <div class="card mb-2">
+                <div class="card-body">
+                    <a href="{{ route('transfer') }}" class="d-flex justify-content-between align-items-center">
+                        <span>
+                            <img src="{{ asset('/frontend/images/money-transfer.png') }}" alt="money-transfer">
+                            Transfer</span>
+                        <i class="uil uil-angle-right-b"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card mb-2">
+                <div class="card-body">
+                    <a href="{{ route('wallet') }}" class="d-flex justify-content-between align-items-center">
+                        <span>
+                            <img src="{{ asset('/frontend/images/wallet.png') }}" alt="wallet">
+                            Wallet</span>
+                        <i class="uil uil-angle-right-b"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card mb-2">
+                <div class="card-body">
+                    <a href="" class="d-flex justify-content-between align-items-center">
+                        <span>
+                            <img src="{{ asset('/frontend/images/transaction.png') }}" alt="">
+                            Transaction</span>
+                        <i class="uil uil-angle-right-b"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <a href="{{ route('profile') }}" class="d-flex justify-content-between align-items-center">
+                        <span>
+                            <img src="{{ asset('/frontend/images/user.png') }}" alt="account">
+                            Account</span>
+                        <i class="uil uil-angle-right-b"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 @endsection
 @section('scripts')

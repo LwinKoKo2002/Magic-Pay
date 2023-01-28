@@ -54,4 +54,9 @@ class PageController extends Controller
             'user'=>$user
         ]);
     }
+
+    public function transfer()
+    {
+        return view('frontend.transfer');
+    }
 }
