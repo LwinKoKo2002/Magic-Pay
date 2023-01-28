@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="row transfer-icon-container mb-1">
+    <div class="row home-icon-container mb-1">
         <a href="" class="col-6 p-2">
             <div class="card mt-3">
                 <div class="card-body" style="padding: 13px 8px;">
@@ -42,9 +42,9 @@
             </div>
         </a>
     </div>
-    <div class="row transfer-container">
+    <div class="row home-container">
         <div class="col-12 p-2">
-            <p class="mt-1 mb-3" style="letter-spacing: 0.1px">Top Services</p>
+            <p class="mt-1 mb-4" style="letter-spacing: 0.1px">Top Services</p>
             <div class="card mb-2">
                 <div class="card-body">
                     <a href="{{ route('transfer') }}" class="d-flex justify-content-between align-items-center">

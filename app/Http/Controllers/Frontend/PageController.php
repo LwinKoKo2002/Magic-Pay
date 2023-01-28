@@ -59,4 +59,9 @@ class PageController extends Controller
     {
         return view('frontend.transfer');
     }
+
+    public function transferConfirm(Request $request)
+    {
+        dd($request->all());
+    }
 }

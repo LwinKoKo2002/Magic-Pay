@@ -155,7 +155,16 @@ input::-webkit-inner-spin-button {
     padding: 20px !important;
 }
 
-.auth-form input:focus {
+.auth-form textarea {
+    border: none;
+    border-radius: 5px;
+    border: 2px solid var(--text-dark-pale);
+    outline: none;
+    box-shadow: none;
+}
+
+.auth-form input:focus,
+.auth-form textarea:focus {
     outline: none;
     box-shadow: none;
     border: 2px solid var(--text-dark-pale);
@@ -395,49 +404,72 @@ input::-webkit-inner-spin-button {
     font-size: 17px;
 }
 
-.home .transfer-container p {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.home .transfer-icon-container a {
+.home .home-icon-container a {
     text-decoration: none;
 }
 
-.home .transfer-icon-container img {
+.home .home-icon-container img {
     width: 37px;
     height: 37px;
 }
 
-.home .transfer-icon-container span {
+.home .home-icon-container span {
     margin-left: 3px;
     color: var(--text-dark);
     font-size: 15px;
     letter-spacing: 0.1px;
 }
-.home .transfer-container .card {
+
+.home .home-container p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.home .home-container .card {
     border-radius: 5px;
 }
 
-.home .transfer-container h6 {
+.home .home-container h6 {
     font-size: 15px;
     font-weight: bold;
     letter-spacing: 0.3px;
     color: var(---text-dark);
 }
 
-.home .transfer-container img {
+.home .home-container img {
     width: 29px;
     height: 29px;
     margin-right: 5px;
 }
 
-.home .transfer-container a {
+.home .home-container a {
     text-decoration: none;
     color: var(--text-dark);
 }
 
-.home .transfer-container span {
+.home .home-container span {
     font-size: 14px;
     letter-spacing: 0.4px;
+}
+
+/*---------------- Transfer ----------------*/
+.transfer-icon-container img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.transfer-icon-container h6 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.transfer .btn-light {
+    background-color: var(--body-color);
+}
+
+.transfer i {
+    display: inline-block;
+    margin-top: 3px;
+    font-size: 18px;
 }

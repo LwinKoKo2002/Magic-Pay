@@ -19,4 +19,5 @@ Route::namespace('Frontend')->middleware('auth:web')->group(function () {
     Route::post('/change-password', [PageController::class,'updatePassword'])->name('update-password');
     Route::get('/wallet', [PageController::class,'wallet'])->name('wallet');
     Route::get('/transfer', [PageController::class,'transfer'])->name('transfer');
+    Route::post('/transfer/confirm', [PageController::class,'transferConfirm'])->name('transfer.confirm');
 });
