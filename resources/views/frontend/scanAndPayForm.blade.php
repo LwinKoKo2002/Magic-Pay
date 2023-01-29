@@ -14,20 +14,13 @@
                                         <form action="{{ route('transfer.confirm') }}" method="POST">
                                                 @csrf
                                                 <x-input-wrapper>
-                                                        <x-label name="receiver" /> <span
-                                                                id="receiver_account_info"></span>
+                                                        <x-label name="receiver" />
                                                         <div class="input-group">
                                                                 <input type="number" name="receiver"
-                                                                        value="{{ old('receiver') }}" id="receiver"
-                                                                        placeholder="receiver"
+                                                                        value="{{$receiver->phone}}" id="receiver"
                                                                         class="@error('receiver') is-invalid @enderror form-control"
-                                                                        required autocomplete="receiver"
-                                                                        aria-describedby="basic-addon2" autofocus>
-                                                                <div class="input-group-append">
-                                                                        <span class="btn btn-light verify_btn"
-                                                                                id="basic-addon2"><i
-                                                                                        class="uil uil-check-circle"></i></span>
-                                                                </div>
+                                                                        required autocomplete="receiver" autofocus
+                                                                        readonly>
                                                         </div>
                                                         <x-error name="receiver" />
                                                 </x-input-wrapper>
@@ -45,28 +38,4 @@
                 </div>
         </div>
 </div>
-@endsection
-@section('scripts')
-<script>
-        $(document).ready(function () {
-                $('.verify_btn').on('click',function(e){
-                        e.preventDefault();
-                       var phone = $('#receiver').val();
-                       $.ajax({
-                        type: "GET",
-                        url: `/receiver-account-verify?phone=${phone}`,
-                        success: function (res) {
-                                if(res.status == 'success'){
-                                        $('#receiver_account_info').html('(' + res.data['name'] + ')');
-                                        $('#receiver_account_info').css('color','green');
-                                }else{
-                                        $('#receiver_account_info').html('(' + res.message + ')');
-                                        $('#receiver_account_info').css('color','red');
-                                }
-                        }
-                       });
-
-                })
-        });
-</script>
 @endsection

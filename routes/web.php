@@ -19,5 +19,13 @@ Route::namespace('Frontend')->middleware('auth:web')->group(function () {
     Route::post('/change-password', [PageController::class,'updatePassword'])->name('update-password');
     Route::get('/wallet', [PageController::class,'wallet'])->name('wallet');
     Route::get('/transfer', [PageController::class,'transfer'])->name('transfer');
+    Route::get('/receiver-account-verify', [PageController::class,'verifyReceiver']);
     Route::post('/transfer/confirm', [PageController::class,'transferConfirm'])->name('transfer.confirm');
+    Route::post('/transfer/complete', [PageController::class,'transferComplete'])->name('transfer.complete');
+    Route::get('/password-check', [PageController::class,'passwordCheck']);
+    Route::get('/scan-and-pay', [PageController::class,'scanAndPay'])->name('scanAndPay');
+    Route::get('/scan-and-pay-form', [PageController::class,'scanAndPayForm'])->name('scan-and-pay-form');
+    Route::get('/qr-code', [PageController::class,'myReceiveQr'])->name('myQr');
+    Route::get('/transaction', [PageController::class,'transaction'])->name('transaction');
+    Route::get('/transaction/{trx_id}', [PageController::class,'transactionDetail']);
 });

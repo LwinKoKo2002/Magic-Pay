@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="row home-icon-container mb-1">
-        <a href="" class="col-6 p-2">
+        <a href="{{ route('scanAndPay') }}" class="col-6 p-2">
             <div class="card mt-3">
                 <div class="card-body" style="padding: 13px 8px;">
                     <img src="{{ asset('/frontend/images/scanner.png') }}" alt="scanner" class="mx-1">
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </a>
-        <a href="" class="col-6 p-2">
+        <a href="{{ route('myQr') }}" class="col-6 p-2">
             <div class="card mt-3">
                 <div class="card-body" style="padding: 13px 8px;">
                     <img src="{{ asset('/frontend/images/qr-code.png') }}" alt="qr-code" class="mx-1">
@@ -67,7 +67,7 @@
             </div>
             <div class="card mb-2">
                 <div class="card-body">
-                    <a href="" class="d-flex justify-content-between align-items-center">
+                    <a href="{{ route('transaction') }}" class="d-flex justify-content-between align-items-center">
                         <span>
                             <img src="{{ asset('/frontend/images/transaction.png') }}" alt="">
                             Transaction</span>

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\User;
+use App\Helpers\Generator;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -60,8 +64,181 @@ class PageController extends Controller
         return view('frontend.transfer');
     }
 
+    public function verifyReceiver(Request $request)
+    {
+        $phone = $request->phone;
+        $authUser = auth()->guard('web')->user();
+        if ($authUser->phone != $phone) {
+            $receiver = User::firstWhere('phone', $phone);
+            if ($receiver) {
+                return response()->json([
+                    'status'=>'success',
+                    'message'=>'success',
+                    'data'=>$receiver
+                ]);
+            }
+            return response()->json([
+                'status'=>'fail',
+                'message'=>'Invalid User'
+            ]);
+        }
+        return response()->json([
+            'status'=>'fail',
+            'message'=>'Invalid User'
+        ]);
+    }
+    
     public function transferConfirm(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'receiver'=>['required'],
+            'amount'=>['required']
+        ]);
+
+        $authUser = auth()->guard('web')->user();
+        $receiver = User::firstWhere('phone', $request->receiver);
+        $description = $request->description;
+        $amount = $request->amount;
+
+        if (!$receiver) {
+            return back()->withErrors(['receiver'=>"You don't have an account with this phone number."])->withInput();
+        }
+
+        if ($authUser->phone === $receiver->phone) {
+            return back()->withErrors(['receiver'=>"Your phone number is invalid."])->withInput();
+        }
+
+        if ($amount < 1000) {
+            return back()->withErrors(['amount'=>'Your amount must be at least 1000 Kyats.'])->withInput();
+        }
+
+        if ($amount > $authUser->wallet->amount) {
+            return back()->withErrors(['amount'=>"You don't have enough amount."])->withInput();
+        }
+
+        return view('frontend.transfer_confirm', [
+            'authUser'=>$authUser,
+            'receiver'=>$receiver,
+            'description'=>$description,
+            'amount'=>$amount
+        ]);
+    }
+
+    public function transferComplete(Request $request)
+    {
+        $amount = $request->amount;
+        $description = $request->description;
+        $receiver = User::firstWhere('phone', $request->receiver);
+        $sender = User::firstWhere('phone', $request->sender);
+        
+        DB::beginTransaction();
+        try {
+            $sender_wallet = $sender->wallet;
+            $sender_wallet->decrement('amount', $amount);
+            $sender_wallet->update();
+            
+            $receiver_wallet = $receiver->wallet;
+            $receiver_wallet->increment('amount', $amount);
+            $receiver_wallet->update();
+
+            $ref_number = Generator::ref_number();
+
+            $sender_transaction = new Transaction();
+            $sender_transaction->trx_id = Generator::trx_id();
+            $sender_transaction->ref_no = $ref_number;
+            $sender_transaction->user_id = $sender->id;
+            $sender_transaction->source_id = $receiver->id;
+            $sender_transaction->amount = $amount;
+            $sender_transaction->type = 2;
+            $sender_transaction->description = $description;
+            $sender_transaction->save();
+
+            $receiver_transaction = new Transaction();
+            $receiver_transaction->trx_id = Generator::trx_id();
+            $receiver_transaction->ref_no = $ref_number;
+            $receiver_transaction->user_id = $receiver->id;
+            $receiver_transaction->source_id = $sender->id;
+            $receiver_transaction->amount = $amount;
+            $receiver_transaction->type = 1;
+            $receiver_transaction->description = $description;
+            $receiver_transaction->save();
+            
+            DB::commit();
+            return redirect("/transaction/".$sender_transaction->trx_id)->with('success', 'Successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return back()->withErrors($th->getMessage())->withInput();
+        }
+    }
+
+    public function passwordCheck(Request $request)
+    {
+        $password = $request->password;
+        $authUser = auth()->guard('web')->user();
+        if (!$password) {
+            return response()->json([
+                'status'=>'fail',
+                'message'=>'Please fill your password.'
+            ]);
+        }
+
+        if (! Hash::check($password, $authUser->password)) {
+            return response()->json([
+                'status'=>'fail',
+                'message'=>'Your password is not correct.'
+            ]);
+        }
+
+        return response()->json([
+            'status'=>'success',
+            'message'=>'Success'
+        ]);
+    }
+
+    public function scanAndPay()
+    {
+        return view('frontend.scanAndPay');
+    }
+
+    public function scanAndPayForm(Request $request)
+    {
+        $phone = $request->phone;
+        $authUser = auth()->guard('web')->user();
+        if ($authUser->phone == $phone) {
+            return back()->withErrors(['error'=>'Invalid QR'])->withInput();
+        }
+        $receiver = User::firstWhere('phone', $phone);
+        if (!$receiver) {
+            return back()->withErrors(['error'=>'Invalid QR'])->withInput();
+        }
+
+        return view('frontend.scanAndPayForm', [
+            'receiver'=>$receiver
+        ]);
+    }
+    
+    public function myReceiveQr()
+    {
+        $authUser = auth()->guard('web')->user();
+        return view('frontend.myReceiveQr', [
+            'authUser'=>$authUser
+        ]);
+    }
+
+    public function transaction()
+    {
+        $authUser = auth()->guard('web')->user();
+        $transactions = Transaction::with('user', 'source')->where('user_id', $authUser->id)->orderBy('id', 'desc')->paginate(6);
+        return view('frontend.transaction', [
+            'transactions'=>$transactions
+        ]);
+    }
+
+    public function transactionDetail($trx_id)
+    {
+        $transaction = Transaction::where('trx_id', $trx_id)->where('user_id', auth()->guard('web')->id())->first();
+        return view('frontend.transactionDetail', [
+            'transaction'=>$transaction
+        ]);
     }
 }

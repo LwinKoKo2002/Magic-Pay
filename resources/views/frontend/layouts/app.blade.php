@@ -50,7 +50,7 @@
     </section>
     <!-- Bottom Menu -->
     <section class="bottom-menu">
-        <a href="" class="scanner">
+        <a href="{{ route('scanAndPay') }}" class="scanner">
             <div class="inner">
                 <i class="uil uil-qrcode-scan"></i>
             </div>
@@ -58,7 +58,7 @@
         <div class="d-flex justify-content-center">
             <div class="col-md-8">
                 <div class="row">
-                    <a href="{{ route('home') }}" class="col-3 text-center @yield('home-active')"">
+                    <a href="{{ route('home') }}" class="col-3 text-center @yield('home-active')">
                         <i class=" uil uil-estate"></i>
                         <p class="@yield('home-active')">Home</p>
                     </a>
@@ -66,9 +66,9 @@
                         <i class="uil uil-wallet"></i>
                         <p class="@yield('wallet-active')">Wallet</p>
                     </a>
-                    <a href="" class="col-3 text-center">
+                    <a href="{{ route('transaction') }}" class="col-3 text-center @yield('transaction-active')">
                         <i class="uil uil-exchange-alt"></i>
-                        <p>Transaction</p>
+                        <p class="@yield('transaction-active')">Transaction</p>
                     </a>
                     <a href="{{ route('profile') }}" class="col-3 text-center @yield('account-active')">
                         <i class="uil uil-user"></i>
@@ -84,6 +84,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
     <!-- Sweetalert 2  -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Jscroll -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
     <!-- Extra Script -->
     @yield('scripts')
     <script>

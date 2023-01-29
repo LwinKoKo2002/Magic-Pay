@@ -75,7 +75,7 @@ class UserController extends Controller
                 ],
                 [
                     'account_number' => Generator::account_number(),
-                    'amount'=>1000
+                    'amount'=>10000
                 ]
             );
             DB::commit();
