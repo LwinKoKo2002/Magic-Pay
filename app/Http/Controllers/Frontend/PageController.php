@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use App\Notifications\GeneralNotification;
+use Illuminate\Support\Facades\Notification;
 
 class PageController extends Controller
 {
@@ -46,6 +48,13 @@ class PageController extends Controller
         if (Hash::check($old_password, $user->password)) {
             $user->password = $new_password;
             $user->update();
+            $title = 'Change Password';
+            $message = 'Your account password is successfully changed.';
+            $sourceable_id = $user->id;
+            $sourceable_type = User::class;
+            $web_link = "/profile";
+            Notification::send($user, new GeneralNotification($title, $message, $sourceable_id, $sourceable_type, $web_link));
+            
             return redirect()->route('profile')->with('success', 'Successfully updated your password.');
         }
         return back()->withErrors(['old_password'=>'Your old password is not correct'])->withInput();
@@ -163,6 +172,21 @@ class PageController extends Controller
             $receiver_transaction->description = $description;
             $receiver_transaction->save();
             
+
+            $title = 'E-money Transfered';
+            $message = 'Your e-money transfered '. number_format($amount, 2) . " Kyats to ". $receiver->phone . "." ;
+            $sourceable_id = $sender->id;
+            $sourceable_type = Transaction::class;
+            $web_link = "/transaction/".$sender_transaction->trx_id;
+            Notification::send($sender, new GeneralNotification($title, $message, $sourceable_id, $sourceable_type, $web_link));
+            
+            $title = 'E-money Received';
+            $message = 'Your e-money received '. number_format($amount, 2) . " Kyats from ". $sender->phone . "." ;
+            $sourceable_id = $receiver->id;
+            $sourceable_type = Transaction::class;
+            $web_link = "/transaction/".$receiver_transaction->trx_id;
+            Notification::send($receiver, new GeneralNotification($title, $message, $sourceable_id, $sourceable_type, $web_link));
+
             DB::commit();
             return redirect("/transaction/".$sender_transaction->trx_id)->with('success', 'Successfully');
         } catch (\Throwable $th) {
@@ -228,7 +252,16 @@ class PageController extends Controller
     public function transaction()
     {
         $authUser = auth()->guard('web')->user();
-        $transactions = Transaction::with('user', 'source')->where('user_id', $authUser->id)->orderBy('id', 'desc')->paginate(6);
+        $transactions = Transaction::with('user', 'source')->where('user_id', $authUser->id)->orderBy('id', 'desc');
+        if (request()->type) {
+            $transactions = $transactions->where('type', request()->type);
+        }
+
+        if (request()->date) {
+            $transactions = $transactions->whereDate('created_at', request()->date);
+        }
+
+        $transactions = $transactions->paginate(6);
         return view('frontend.transaction', [
             'transactions'=>$transactions
         ]);

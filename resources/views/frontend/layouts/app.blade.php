@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('/frontend/css/app.css') }}">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- Date Range Picker -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 </head>
 
@@ -33,8 +35,9 @@
                     <div href="" class="col-8 text-center">
                         <p>@yield('title')</p>
                     </div>
-                    <a href="" class="col-2 text-center">
-                        <i class="uil uil-bell"></i>
+                    <a href="{{ route('notification') }}" class="col-2 text-center">
+                        <i class="uil uil-bell"></i><span class="badge badge-pill badge-danger"> {{ $unread_noti_count
+                            }}</span>
                     </a>
                 </div>
             </div>
@@ -82,10 +85,14 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <!--Date Range Picker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <!-- Sweetalert 2  -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Jscroll -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+
     <!-- Extra Script -->
     @yield('scripts')
     <script>

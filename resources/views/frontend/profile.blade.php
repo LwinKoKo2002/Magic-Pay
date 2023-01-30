@@ -8,7 +8,7 @@
                         <div class="profile-image-container text-center mt-2">
                                 <img src="https://ui-avatars.com/api/?background=231a72&color=ffffff&name={{ auth()->guard('web')->user()->name }}"
                                         alt="profile-image">
-                                <p class="mt-2">{{ (auth()->guard('web')->user()->name) }}</p>
+                                <p class="mt-1">{{ (auth()->guard('web')->user()->name) }}</p>
                         </div>
 
                         <div class="card mt-4" style="border-radius: 12px">

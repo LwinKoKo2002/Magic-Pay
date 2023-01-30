@@ -277,6 +277,13 @@ input::-webkit-inner-spin-button {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.header-menu span {
+    position: relative;
+    top: -38px;
+    left: 8px;
+    padding: 3px 5px;
+}
 /*---------------- Bottom Menu ----------------*/
 .bottom-menu {
     left: 0;
@@ -351,7 +358,7 @@ input::-webkit-inner-spin-button {
 
 /*---------------- Main Content ----------------*/
 .main-content {
-    margin: 60px 0px;
+    margin: 70px 0px;
 }
 
 /*---------------- Profile ----------------*/
@@ -458,7 +465,7 @@ input::-webkit-inner-spin-button {
 }
 
 .home .home-container p {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -584,6 +591,11 @@ input::-webkit-inner-spin-button {
     margin-top: 8px;
 }
 
+.transaction select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .transaction a {
     text-decoration: none;
     color: var(--text-dark);
@@ -618,6 +630,9 @@ input::-webkit-inner-spin-button {
     font-size: 15px;
 }
 
+.transaction h6 {
+    font-size: 16px;
+}
 /*---------------- Transaction  Detail ----------------*/
 
 .transaction-detail-container {
@@ -659,4 +674,46 @@ input::-webkit-inner-spin-button {
     font-weight: 500;
     letter-spacing: 0.7px;
     margin-bottom: 50px;
+}
+
+/*---------------- Notificcation ----------------*/
+
+.notification a {
+    text-decoration: none;
+    color: var(--text-dark);
+}
+
+.notification .read_noti {
+    width: 14px;
+    height: 14px;
+}
+
+.notification img {
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+}
+
+.notification i {
+    font-size: 22px;
+}
+
+.notification .text-danger {
+    color: var(--text-danger) !important;
+}
+/*---------------- Notificcation Detail ----------------*/
+.notification-detail img {
+    width: 250px;
+    height: 250px;
+}
+
+.notification-detail .btn-theme {
+    margin-top: 10px;
+    background-color: var(--theme-color);
+    border: 1px solid var(--theme-color);
+    color: var(--text-white);
+    padding: 12px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    margin-bottom: 20px;
 }

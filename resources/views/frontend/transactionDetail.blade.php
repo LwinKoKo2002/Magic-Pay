@@ -73,7 +73,8 @@
                                                         </div>
                                                 </div>
                                         </div>
-                                        <h6 class="my-3 font-weight-bold">Detail Informations</h6>
+                                        <h6 class="my-3 font-weight-bold" style="font-size: 15px;">Informations Detail
+                                        </h6>
                                         <div class="card">
                                                 <div class="card-body">
                                                         <div
